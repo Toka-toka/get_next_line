@@ -19,10 +19,9 @@
 # include <string.h>
 
 int		get_next_line(int fd, char **line);
-char	*ft_strdup(const char *s);
+int		strchr_int(const char *s, int c);
+char	*strjoin_free(char *s1, char const *s2);
 size_t	ft_strlen(const char *s);
-int		ft_strchr(const char *s, int c);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-char	*ft_strjoin(char *s1, char const *s2);
 
 #endif

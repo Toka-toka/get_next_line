@@ -1,7 +1,24 @@
 # include "get_next_line.h"
-# include <stdio.h>
 
-char		*ft_strjoin(char *s1, char const *s2)
+int		strchr_int(const char *s, int c)
+{
+	char	*str;
+	char	symbol;
+	int	i;
+
+	i = 0;
+	symbol = (char)c;
+	str = (char*)s;
+	while (str[i] != '\0')
+	{
+		if (str[i] == symbol)
+			return (i);
+		i++;
+	}
+	return (c == '\0' ? i : -1);
+}
+
+char		*strjoin_free(char *s1, char const *s2)
 {
 	char	*s3;
 	size_t	len_s1;
@@ -19,44 +36,6 @@ char		*ft_strjoin(char *s1, char const *s2)
 	free(s1);
 	s3[len_s1 + len_s2] = '\0';
 	return (s3);
-}
-
-char		*ft_strdup(const char *s)
-{
-	char	*temp;
-	size_t	i;
-
-	temp = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (temp != NULL)
-	{
-		i = 0;
-		while (s[i] != '\0')
-		{
-			temp[i] = s[i];
-			i++;
-		}
-		temp[i] = '\0';
-		return (temp);
-	}
-	return (NULL);
-}
-
-int		ft_strchr(const char *s, int c)
-{
-	char	*str;
-	char	symbol;
-	int	i;
-
-	i = 0;
-	symbol = (char)c;
-	str = (char*)s;
-	while (str[i] != '\0')
-	{
-		if (str[i] == symbol)
-			return (i);
-		i++;
-	}
-	return (c == '\0' ? i : -1);
 }
 
 size_t	ft_strlen(const char *s)
