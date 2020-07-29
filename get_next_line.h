@@ -18,11 +18,11 @@
 # include <unistd.h>
 # include <string.h>
 
-int	get_next_line(int fd, char **line);
+int		get_next_line(int fd, char **line);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
-int	ft_strchr(const char *s, int c);
+int		ft_strchr(const char *s, int c);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
 
 #endif
