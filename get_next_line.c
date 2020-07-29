@@ -45,9 +45,7 @@ int	get_next_line(int fd, char **line)
 	while (status == 2)
 	{
 		if(start == 0)
-		{
 			status = read_call(fd, &buff);
-		}
 		if (status > 0)
 			status = join_call(line, &buff, &start);
 		if (status != 1)
