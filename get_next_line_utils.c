@@ -1,10 +1,22 @@
-# include "get_next_line.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/29 23:58:00 by sedric            #+#    #+#             */
+/*   Updated: 2020/07/30 00:01:24 by sedric           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		strchr_int(const char *s, int c)
+#include "get_next_line.h"
+
+int					strchr_int(const char *s, int c)
 {
-	char	*str;
-	char	symbol;
-	int	i;
+	char			*str;
+	char			symbol;
+	int				i;
 
 	i = 0;
 	symbol = (char)c;
@@ -18,11 +30,11 @@ int		strchr_int(const char *s, int c)
 	return (c == '\0' ? i : -1);
 }
 
-char		*strjoin_free(char *s1, char const *s2)
+char				*strjoin_free(char *s1, char const *s2)
 {
-	char	*s3;
-	size_t	len_s1;
-	size_t	len_s2;
+	char			*s3;
+	size_t			len_s1;
+	size_t			len_s2;
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
@@ -38,9 +50,9 @@ char		*strjoin_free(char *s1, char const *s2)
 	return (s3);
 }
 
-size_t	ft_strlen(const char *s)
+size_t				ft_strlen(const char *s)
 {
-	size_t	len;
+	size_t			len;
 
 	len = 0;
 	while (s[len] != '\0')
@@ -48,10 +60,10 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void				*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char *dest_point;
-	unsigned char *src_point;
+	unsigned char	*dest_point;
+	unsigned char	*src_point;
 
 	dest_point = (unsigned char*)dest;
 	src_point = (unsigned char*)src;

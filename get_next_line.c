@@ -1,8 +1,20 @@
-# include "get_next_line.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sedric <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/29 23:51:35 by sedric            #+#    #+#             */
+/*   Updated: 2020/07/29 23:55:43 by sedric           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	join_call(char **line, char *buff, int *start)
+#include "get_next_line.h"
+
+static int		join_call(char **line, char *buff, int *start)
 {
-	int sym_index;
+	int			sym_index;
 
 	sym_index = strchr_int(buff, '\n');
 	if (sym_index != -1)
@@ -11,36 +23,36 @@ int	join_call(char **line, char *buff, int *start)
 	if (*line == NULL)
 		return (-1);
 	if (sym_index == -1)
-		return(2);
+		return (2);
 	*start += (sym_index + 1);
-	return(1);
+	return (1);
 }
 
-int	read_call(int fd, char **buff)
+static int		read_call(int fd, char **buff)
 {
-	int status;
-	
-	if (!(*buff = malloc((BUFFER_SIZE +1) * sizeof(char))))
-		return(-1);
+	int			status;
+
+	if (!(*buff = malloc((BUFFER_SIZE + 1) * sizeof(char))))
+		return (-1);
 	status = read(fd, *buff, BUFFER_SIZE);
 	buff[0][status] = '\0';
-	return(status);
+	return (status);
 }
 
-int	get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
-	static char *buff;
+	static char	*buff;
 	static int	start;
 	int			status;
 
 	status = 2;
 	if (line == NULL || fd < 0 || BUFFER_SIZE < 1)
-		return(-1);
+		return (-1);
 	*line = malloc(sizeof(char) * 1);
 	*line[0] = '\0';
 	while (status == 2)
 	{
-		if(start == 0)
+		if (start == 0)
 			status = read_call(fd, &buff);
 		if (status > 0)
 			status = join_call(line, buff + start, &start);
@@ -50,5 +62,5 @@ int	get_next_line(int fd, char **line)
 			free(buff);
 		}
 	}
-	return(status);
+	return (status);
 }
